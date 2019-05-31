@@ -1,30 +1,84 @@
-* { margin: 0; padding: 0; list-style: none; }
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-html, body { width: 100%; height: 100%; }
+html, body {
+  width: 100%;
+  height: 100%;
+}
 
-.btn-wrap { width: 100%; margin: 15px 0; font-size: 0; text-align: center; }
+.btn-wrap {
+  width: 100%;
+  margin: 15px 0;
+  font-size: 0;
+  text-align: center;
+}
 
-.btn-wrap button { padding: 10px; border: 0 none; font-size: 13px; text-align: center; background-color: #ececec; }
+.btn-wrap button {
+  padding: 10px;
+  border: 0 none;
+  font-size: 13px;
+  text-align: center;
+  background-color: #ececec;
+}
 
-.btn-wrap button:not(:first-of-type) { margin-left: 30px; }
+.btn-wrap button:not(:first-of-type) {
+  margin-left: 30px;
+}
 
-.list { position: relative; font-size: 0; }
+.list {
+  position: relative;
+  width: 1280px;
+  font-size: 0;
+}
 
-.list > li { display: inline-block; margin: 0 0 15px; padding: 10px; border: 1px solid #e3e3e3; -webkit-box-sizing: border-box; box-sizing: border-box; font-size: 13px; }
+.list > li {
+  display: inline-block;
+  margin: 0 0 15px;
+  padding: 10px;
+  border: 1px solid #e3e3e3;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 13px;
+}
 
-.list > li > img { width: 100%; vertical-align: top; }
+.list > li > img {
+  width: 100%;
+  vertical-align: top;
+}
 
-.list.type01 > li { -webkit-column-count: 4; column-count: 4; -webkit-column-gap: 50px; column-gap: 50px; }
+.list.type01 > li {
+  -webkit-column-count: 4;
+          column-count: 4;
+  -webkit-column-gap: 50px;
+          column-gap: 50px;
+}
 
-.list.type02 { height: calc(100% - 67px); margin: 0 auto; }
+.list.type02 {
+  height: calc(100% - 67px);
+  margin: 0 auto;
+}
 
-.list.type02 > li { position: absolute; width: calc(100%/4 - 10px); }
+.list.type02 > li {
+  position: absolute;
+  width: calc(100%/4 - 10px);
+}
 
-.list.type02 > li:nth-child(4n + 1) { left: 0; }
+.list.type02 > li:nth-child(4n + 1) {
+  left: 0;
+}
 
-.list.type02 > li:nth-child(4n + 2) { left: 25%; }
+.list.type02 > li:nth-child(4n + 2) {
+  left: 25%;
+}
 
-.list.type02 > li:nth-child(4n + 3) { left: 50%; }
+.list.type02 > li:nth-child(4n + 3) {
+  left: 50%;
+}
 
-.list.type02 > li:nth-child(4n + 4) { left: 75%; }
+.list.type02 > li:nth-child(4n + 4) {
+  left: 75%;
+}
 /*# sourceMappingURL=style.css.map */
