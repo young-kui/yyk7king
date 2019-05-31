@@ -25,15 +25,17 @@ function data_append(arr, count) {
     
     arr_slice.forEach(function(item, index){
         let dom_img = document.createElement("img"),
-            dom_li = document.createElement("li");
+            dom_li = document.createElement("li"),
+            arr_top = [];
 
         dom_img.src = item;
         dom_li.appendChild(dom_img);
         document.getElementById("list").appendChild(dom_li);
 
-        console.log(dom_img);
+        arr_top.push(dom_li.clientHeight);
+        console.log(arr_top);
     });
- console.log('adsf');   
+ 
     // let out = "",
     //     i;
     // for(i = 0; i < arr.length; i++) {
