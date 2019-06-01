@@ -50,7 +50,7 @@ const btn_get = () => {
     
     timer = setTimeout(function(){
         count === 0 ? data_request(count) : data_append(myArr, count);
-        count++;    // 호출한 후 count 더해주게끔
+        count++;
     },100);
 }
 
@@ -61,3 +61,12 @@ const btn_clear = () => {
         item.parentNode.removeChild(item);
     });
 }
+
+$(window).scroll(function(){
+    let dh = $(document).height(),
+        wh = $(window).height(),
+        wt = $(window).scrollTop();
+    if( dh === wh + wt){
+        document.querySelector("#get").click();
+    }
+})

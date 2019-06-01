@@ -11,7 +11,7 @@ html, body {
 
 .btn-wrap {
   width: 100%;
-  margin: 15px 0;
+  padding: 15px 0;
   font-size: 0;
   text-align: center;
 }
@@ -31,7 +31,6 @@ html, body {
 .list {
   position: relative;
   width: 1280px;
-  height: calc(100% - 65px);
   font-size: 0;
 }
 
@@ -81,5 +80,18 @@ html, body {
 
 .list.type02 > div:nth-child(4n + 4) {
   left: 75%;
+}
+
+@media (max-width: 769px) {
+  .list {
+    width: 100%;
+  }
+  .list.type02 > div {
+    width: calc(100% - 40px);
+    margin: 0 20px;
+  }
+  .list.type02 > div:nth-child(n) {
+    left: 0;
+  }
 }
 /*# sourceMappingURL=style.css.map */
