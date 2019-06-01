@@ -31,6 +31,7 @@ html, body {
 .list {
   position: relative;
   width: 1280px;
+  height: calc(100% - 65px);
   font-size: 0;
 }
 

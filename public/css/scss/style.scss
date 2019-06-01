@@ -20,7 +20,7 @@ html, body{width:100%;height:100%;}
 .list{
     position:relative;
     width:1280px;
-    
+    height:calc(100% - 65px);
     font-size:0;
     > div{
         display:inline-block;

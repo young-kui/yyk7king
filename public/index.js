@@ -1,30 +1,20 @@
-// document.querySelector('body').addEventListener('click', function(event) {
-//     if (event.target.tagName.toLowerCase() === 'button') {
-//         if(event.target.attributes.id.nodeValue === 'get'){
-//             document.getElementById("get").addEventListener("click", btn_get);
-//         }
-//         if(event.target.attributes.id.nodeValue === 'clear'){
-//             document.getElementById("clear").addEventListener("click", btn_clear);
-//         }
-//     }
-// },true);
-
 window.onload = function(){
-    document.getElementById("get").addEventListener("click", btn_get);
-    document.getElementById("clear").addEventListener("click", btn_clear);
+    document.querySelector("#get").addEventListener("click", btn_get);
+    document.querySelector("#clear").addEventListener("click", btn_clear);
 }
 
 let count = 0,
-    timer;
+    timer,
+    myArr = [], //처음에 한번만 받아오게
+    topArr = []; // top 위치 저장하는 배열
 
-function data_request(count){
+const data_request = (count) => {
     let xmlhttp = new XMLHttpRequest(),
         url = "data.json";
 
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            let myArr = JSON.parse(this.responseText);
-            
+            myArr = JSON.parse(this.responseText);
             data_append(myArr, count);
         }
     };
@@ -32,44 +22,39 @@ function data_request(count){
     xmlhttp.send();
 }
 
-function data_append(arr, count) {
-    let arr_slice = arr.slice(4*(count - 1), 4*count);
+const data_append = (arr, count) => {
+    let arr_slice = arr.slice(4*count, 4*(count+1));
 
     arr_slice.forEach(function(item){
         let dom_img = document.createElement("img"),
-            dom_div = document.createElement("div"),
-            dom_div_all = document.querySelectorAll('.list div'),
-            dom_div_id = 'list'+dom_div_all.length;
+            dom_div = document.createElement("div");
+
+        const len = document.querySelectorAll('.list div').length,
+              dom_div_id = 'list'+len;
         
-        dom_div.id = dom_div_id;
+        dom_div.id = dom_div_id;//혹시 id값으로 컨트롤 할까봐
+        dom_div.style.top = len >= 4 ? topArr[len - 4]+'px' : 0; // top 위치 구하는..
         dom_img.src = item;
         dom_div.appendChild(dom_img);
-        document.getElementById("list").appendChild(dom_div);
+        document.querySelector("#list").appendChild(dom_div);
         dom_img.onload = function(){
-            dom_div.style.height = dom_div.clientHeight+'px';
-            
-            
+            topArr[len] = dom_div.offsetTop + dom_div.clientHeight + 15;
         };
-       
     });
-
-   
-   
-
 }
 
-function btn_get(){
+const btn_get = () => {
     if (timer) {
         clearTimeout(timer);
     }
     
     timer = setTimeout(function(){
-        count++;
-        data_request(count);
+        count === 0 ? data_request(count) : data_append(myArr, count);
+        count++;    // 호출한 후 count 더해주게끔
     },100);
 }
 
-function btn_clear(){
+const btn_clear = () => {
     let ele_div = document.querySelectorAll(".list div");
     count = 0;
     ele_div.forEach(function(item){
