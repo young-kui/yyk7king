@@ -22,7 +22,7 @@ html, body{width:100%;height:100%;}
     width:1280px;
     
     font-size:0;
-    > li{
+    > div{
         display:inline-block;
         margin:0 0 15px;
         padding:10px;
@@ -35,7 +35,7 @@ html, body{width:100%;height:100%;}
         }
     }
     &.type01{
-        > li{
+        > div{
             column-count: 4;
             column-gap: 50px;
         }
@@ -43,7 +43,7 @@ html, body{width:100%;height:100%;}
     &.type02{
         height:calc(100% - 67px);
         margin:0 auto;
-        > li{
+        > div{
             position:absolute;
             width:calc(100%/4 - 10px);
             &:nth-child(4n + 1){left:0;}

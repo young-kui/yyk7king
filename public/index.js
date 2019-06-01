@@ -34,22 +34,28 @@ function data_request(count){
 
 function data_append(arr, count) {
     let arr_slice = arr.slice(4*(count - 1), 4*count);
-    
+
     arr_slice.forEach(function(item){
         let dom_img = document.createElement("img"),
-            dom_li = document.createElement("li"),
-            dom_li_all = document.querySelectorAll('.list li'),
-            dom_li_id = 'list'+dom_li_all.length;
+            dom_div = document.createElement("div"),
+            dom_div_all = document.querySelectorAll('.list div'),
+            dom_div_id = 'list'+dom_div_all.length;
         
-        dom_li.id = dom_li_id;
+        dom_div.id = dom_div_id;
         dom_img.src = item;
-        dom_li.appendChild(dom_img);
-        document.getElementById("list").appendChild(dom_li);
-
+        dom_div.appendChild(dom_img);
+        document.getElementById("list").appendChild(dom_div);
         dom_img.onload = function(){
-            console.log(dom_li.clientHeight);
+            dom_div.style.height = dom_div.clientHeight+'px';
+            
+            
         };
+       
     });
+
+   
+   
+
 }
 
 function btn_get(){
@@ -64,9 +70,9 @@ function btn_get(){
 }
 
 function btn_clear(){
-    let ele_ul = document.querySelectorAll(".list li");
+    let ele_div = document.querySelectorAll(".list div");
     count = 0;
-    ele_ul.forEach(function(item){
+    ele_div.forEach(function(item){
         item.parentNode.removeChild(item);
     });
 }

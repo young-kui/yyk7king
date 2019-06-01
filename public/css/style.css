@@ -34,7 +34,7 @@ html, body {
   font-size: 0;
 }
 
-.list > li {
+.list > div {
   display: inline-block;
   margin: 0 0 15px;
   padding: 10px;
@@ -44,12 +44,12 @@ html, body {
   font-size: 13px;
 }
 
-.list > li > img {
+.list > div > img {
   width: 100%;
   vertical-align: top;
 }
 
-.list.type01 > li {
+.list.type01 > div {
   -webkit-column-count: 4;
           column-count: 4;
   -webkit-column-gap: 50px;
@@ -61,24 +61,24 @@ html, body {
   margin: 0 auto;
 }
 
-.list.type02 > li {
+.list.type02 > div {
   position: absolute;
   width: calc(100%/4 - 10px);
 }
 
-.list.type02 > li:nth-child(4n + 1) {
+.list.type02 > div:nth-child(4n + 1) {
   left: 0;
 }
 
-.list.type02 > li:nth-child(4n + 2) {
+.list.type02 > div:nth-child(4n + 2) {
   left: 25%;
 }
 
-.list.type02 > li:nth-child(4n + 3) {
+.list.type02 > div:nth-child(4n + 3) {
   left: 50%;
 }
 
-.list.type02 > li:nth-child(4n + 4) {
+.list.type02 > div:nth-child(4n + 4) {
   left: 75%;
 }
 /*# sourceMappingURL=style.css.map */
