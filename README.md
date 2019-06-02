@@ -87,5 +87,4 @@
     * 최대한 es6 형태로 만들려고 했지만 미흡한 부분이 있음.
     * 아직 사용해보지 못한 레이아웃 구조 적용(하위 버전 브라우져를 사용하지 않는다면 사용 가능)
         * column-count, column-width, column-gap를 이용한 구조
-
-Link: [참조링크]: https://codepen.io/egoing/pen/EgyBXd "Go codepen"
+        * Link: [참조링크]: https://codepen.io/egoing/pen/EgyBXd "Go codepen"
