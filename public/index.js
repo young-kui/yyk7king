@@ -1,12 +1,14 @@
 window.onload = function(){
     document.querySelector("#get").addEventListener("click", btn_get);
     document.querySelector("#clear").addEventListener("click", btn_clear);
+    window.addEventListener('resize', window_size);
 }
 
 let count = 0,
     timer,
     myArr = [], //처음에 한번만 받아오게
-    topArr = []; // top 위치 저장하는 배열
+    topArr = [], // top 위치 저장하는 배열
+    resize_count = 4; 
 
 const data_request = (count) => {
     let xmlhttp = new XMLHttpRequest(),
@@ -23,7 +25,7 @@ const data_request = (count) => {
 }
 
 const data_append = (arr, count) => {
-    let arr_slice = arr.slice(4*count, 4*(count+1));
+    let arr_slice = arr.slice(resize_count*count, resize_count*(count+1));
 
     arr_slice.forEach(function(item){
         let dom_img = document.createElement("img"),
@@ -33,7 +35,7 @@ const data_append = (arr, count) => {
               dom_div_id = 'list'+len;
         
         dom_div.id = dom_div_id;//혹시 id값으로 컨트롤 할까봐
-        dom_div.style.top = len >= 4 ? topArr[len - 4]+'px' : 0; // top 위치 구하는..
+        dom_div.style.top = len >= resize_count ? topArr[len - resize_count]+'px' : 0; // top 위치 구하는..
         dom_img.src = item;
         dom_div.appendChild(dom_img);
         document.querySelector("#list").appendChild(dom_div);
@@ -62,11 +64,20 @@ const btn_clear = () => {
     });
 }
 
+const window_size = () => {
+    let ws = document.body.clientWidth;
+    if(ws < 769){
+        resize_count = 1;
+    }else{
+        resize_count = 4;
+    }
+}
+
 $(window).scroll(function(){
     let dh = $(document).height(),
         wh = $(window).height(),
         wt = $(window).scrollTop();
-    if( dh === wh + wt){
+    if(dh === wh + wt){
         document.querySelector("#get").click();
     }
 })
