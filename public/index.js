@@ -37,11 +37,12 @@ const data_append = (arr, count) => {
         dom_div.id = dom_div_id;//혹시 id값으로 컨트롤 할까봐
         dom_img.src = item;
         dom_div.appendChild(dom_img);
+        document.querySelector("#list").appendChild(dom_div);
         dom_div.style.top = len >= resize_count ? top_arr[len - resize_count]+'px' : 0; // top 위치 구하는..
         dom_img.onload = function(){
             top_arr[len] = dom_div.offsetTop + dom_div.clientHeight + 15;
         };
-        document.querySelector("#list").appendChild(dom_div);
+        
     });
 }
 
