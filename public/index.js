@@ -1,14 +1,14 @@
 window.onload = function(){
     document.querySelector("#get").addEventListener("click", btn_get);
     document.querySelector("#clear").addEventListener("click", btn_clear);
-    window.addEventListener('resize', window_size);
+    window.addEventListener('resize', window_size());
 }
 
 let count = 0,
     timer,
     my_arr = [], //처음에 한번만 받아오게
     top_arr = [], // top 위치 저장하는 배열
-    resize_count = 4; 
+    resize_count; //최초 Desktop, Mobile view
 
 const data_request = (count) => {
     let xmlhttp = new XMLHttpRequest(),
