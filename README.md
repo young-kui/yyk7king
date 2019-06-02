@@ -49,13 +49,35 @@
             * len = document.querySelectorAll('.list div').length : foreach안에서 노출되는 갯수로 파악
                 - foreach의 index를 사용하지 않는 이유는 현재 노출되는 리스트 순번만 가져와 사용하지 않음
         3. id값은 혹시 제어 할 일이 생길까봐 생성
-        4. 노출 되는 리스트 배치를 위한 top값 구하기
+        4. #list에 append
+        5. 노출 되는 리스트 배치를 위한 top값 구하기
             - len >= resize_count ? top_arr[len - resize_count]+'px' : 0 
             - 첫번째 열은 top = 0으로
             - 두번째 부터는 기존 열에 있는 위치값(offsetTop) + 높이값(clientHeight)로 구해 옴
-            - dom_img.onload : 이미지가 로드 되기전에 엘리먼트의 높이값을 가져오는 현상 해결하기 위해 사용
-                *
-        5. 준비한 값을 #list에 append
+            - dom_img.onload : 이미지가 로드 되기전에 정상적으로 엘리먼트의 높이값을 가져오오지 못하는 현상 해결
+                * + 15 는 노출되는 리스트와 간격 사이를 벌이기 위해 추가
 
 
 6. window_size 함수 작성
+    - Desktop, Mobile에서 노출되는 갯수 정의
+
+
+7. 스크롤 페이징 함수 작성
+    - jquery로 구현
+
+#작업하면서 어려웠던 부분
+    * top값을 계산 하는데 가장 크게 어려웠음. 
+    * 이미 노출된 element 정보의 합을 배열로 만들면 될것이라고 생각은 했지만 ㅜ.ㅜ
+    * img가 완전 로드 되기전에 element 높이값을 가져와 잘못된 수치를 가져오는 현상 발생
+    * img 로드를 해결하기 위해 dom_img.onload = function(){}을 적용
+    * 정상적으로 정보를 가져오는걸 확인 후 dom_img.onload = function(){} 안에서 배열을 만들면 되겠다고 생각ㅜ.ㅜ
+    * 하지만 onload는 foreach에서 작동되고 있어서 배열 메소드들을 사용했지만 초기화 되는 문제가 발생
+    * onload 안에서만 해결 할려고 했던 잘못된 판단으로 많은 시간을 소모
+    * 
+
+#현 작업에서 개선 해야 할 점
+    * Desktop, Mobile으로 구분하여 작업했지만 완벽하지 않는 반응형.
+    * jquery를 사용하지 않기
+    * es6문법으로 전체 변경할것
+    * 최대한 es6 형태로 만들려고 했지만 미흡한 부분이 있음
+    * 요즘 코딩 트렌드 스타일 부분에서 아쉬움(뭔가 아직 jquery작업하던 느낌이 남아있는것 같음)
