@@ -6,8 +6,8 @@ window.onload = function(){
 
 let count = 0,
     timer,
-    myArr = [], //처음에 한번만 받아오게
-    topArr = [], // top 위치 저장하는 배열
+    my_arr = [], //처음에 한번만 받아오게
+    top_arr = [], // top 위치 저장하는 배열
     resize_count = 4; 
 
 const data_request = (count) => {
@@ -16,8 +16,8 @@ const data_request = (count) => {
 
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            myArr = JSON.parse(this.responseText);
-            data_append(myArr, count);
+            my_arr = JSON.parse(this.responseText);
+            data_append(my_arr, count);
         }
     };
     xmlhttp.open("GET", url, true);
@@ -35,12 +35,12 @@ const data_append = (arr, count) => {
               dom_div_id = 'list'+len;
         
         dom_div.id = dom_div_id;//혹시 id값으로 컨트롤 할까봐
-        dom_div.style.top = len >= resize_count ? topArr[len - resize_count]+'px' : 0; // top 위치 구하는..
+        dom_div.style.top = len >= resize_count ? top_arr[len - resize_count]+'px' : 0; // top 위치 구하는..
         dom_img.src = item;
         dom_div.appendChild(dom_img);
         document.querySelector("#list").appendChild(dom_div);
         dom_img.onload = function(){
-            topArr[len] = dom_div.offsetTop + dom_div.clientHeight + 15;
+            top_arr[len] = dom_div.offsetTop + dom_div.clientHeight + 15;
         };
     });
 }
@@ -51,7 +51,7 @@ const btn_get = () => {
     }
     
     timer = setTimeout(function(){
-        count === 0 ? data_request(count) : data_append(myArr, count);
+        count === 0 ? data_request(count) : data_append(my_arr, count);
         count++;
     },100);
 }
